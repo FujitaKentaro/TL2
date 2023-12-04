@@ -1,27 +1,49 @@
-#include<cstdio>
-#include<string>
 #pragma once
+#include <string>
+#include <DirectXTex.h>
+
 class TextureConverter
 {
-
 public:
 	/// <summary>
-	/// ãƒ†ã‚¹ã‚¯ãƒãƒ£ã‚’WICã‹ã‚‰DDSã«å¤‰æ›
+	/// ƒeƒNƒXƒ`ƒƒ‚ðWIC‚©‚çDDS‚É•ÏŠ·‚·‚é
 	/// </summary>
-	/// <param name="filePath">ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹</param>
-	void ConverTextureWICToDDS(const std::string& filePath);
-private:
+	/// <param name = "fliePath">ƒtƒ@ƒCƒ‹ƒpƒX</param>
+	void ConverterTextureWICToDDS(const std::string& filePath);
+
 	/// <summary>
-	/// ãƒ†ã‚¹ã‚¯ãƒãƒ£ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
+	/// ƒpƒX‚Æƒtƒ@ƒCƒ‹–¼‚ð•ª—£‚·‚é
 	/// </summary>
-	/// <param name="filePath">ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹</param>
+	/// <param name="filePath">ƒtƒ@ƒCƒ‹ƒpƒX</param>
+	void SeparateFilePath(const std::wstring& filePath);
+
+	
+	/// <summary>
+	/// ƒeƒNƒXƒ`ƒƒƒtƒ@ƒCƒ‹“Ç‚Ýž‚Ý
+	/// </summary>
+	/// <param name = "fliePath">ƒtƒ@ƒCƒ‹ƒpƒX</param>
 	void LoadWICTextureFromFile(const std::string& filePath);
 
-	/// <summary>
-	/// ãƒžãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã‚’ãƒ¯ã‚¤ãƒ‰æ–‡å­—åˆ—ã«å¤‰æ›
-	/// </summary>
-	/// <param name="mString">ãƒžãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—</param>
-	/// <returns>ãƒ¯ã‚¤ãƒ‰æ–‡å­—åˆ—</returns>
-	static std::wstring ConvertMultiByteStringToWideString(const std::string& mString);
+	static std::wstring ConvertMultiByteStringToWideString(const std::string& String);
 
+private:
+	/// <summary>
+	/// DDSƒeƒNƒXƒ`ƒƒ‚Æ‚µ‚Äƒtƒ@ƒCƒ‹‘‚«o‚µ
+	/// </summary>
+	void SaveDDSTextureToFile();
+
+
+private:
+	//‰æ‘œ‚Ìî•ñ
+	DirectX::TexMetadata metadata_;
+	//‰æ‘œ‚ÌƒCƒ[ƒW‚ÌƒRƒ“ƒeƒi
+	DirectX::ScratchImage scratchImage_;
+
+	//ƒfƒBƒŒƒNƒgƒŠƒpƒX
+	std::wstring directoryPath_;
+	//ƒtƒ@ƒCƒ‹–¼
+	std::wstring fileName_;
+	//ƒtƒ@ƒCƒ‹Šg’£Žq
+	std::wstring fileExt_;
 };
+

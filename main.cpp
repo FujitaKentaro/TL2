@@ -1,29 +1,37 @@
-#include<cstdio>
-#include<cstdlib>
-#include<DirectXTex.h>
-#include"TextureConverter.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cassert>
+#include <comdef.h>
+#include <d3d12.h>
+#include "TextureConverter.h"
 
-//ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°
 enum Argument {
-	kApplicationPath,//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¹
-	kFilePath,		//æ¸¡ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
-	NumArgment
+	kApplicationPath,	//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒpƒX
+	kFilePath,			//“n‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+
+	NumArgument
 };
 
 int main(int argc, char* argv[]) {
-	assert(argc >= NumArgment);
 
-	//COMãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åˆæœŸåŒ–
+	//for (int i = 0; i < argc; i++) {
+	//	printf(argv[i]);
+	//	//‰üs
+	//	printf("\n");
+	//}
+
+	assert(argc >= NumArgument);
+
+	//ƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰Šú‰»
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	assert(SUCCEEDED(hr));
 
-	//ãƒ†ã‚¹ã‚¯ãƒãƒ£ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼
+	//ƒeƒNƒXƒ`ƒƒƒRƒ“ƒo[ƒ^
 	TextureConverter converter;
 
-	//ãƒ†ã‚¯ã‚¹ãƒãƒ£å¤‰æ›
-	converter.ConverTextureWICToDDS(argv[kFilePath]);
+	converter.ConverterTextureWICToDDS(argv[kFilePath]);
 
-	//COMãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®çµ‚äº†
+	//COMƒ‰ƒCƒuƒ‰ƒŠ‚ÌI—¹
 	CoUninitialize();
 
 	system("pause");
