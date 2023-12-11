@@ -6,8 +6,8 @@
 #include "TextureConverter.h"
 
 enum Argument {
-	kApplicationPath,	//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒpƒX
-	kFilePath,			//“n‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+	kApplicationPath,	//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¹
+	kFilePath,			//æ¸¡ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
 
 	NumArgument
 };
@@ -16,24 +16,24 @@ int main(int argc, char* argv[]) {
 
 	//for (int i = 0; i < argc; i++) {
 	//	printf(argv[i]);
-	//	//‰üs
+	//	//æ”¹è¡Œ
 	//	printf("\n");
 	//}
 
 	assert(argc >= NumArgument);
 
-	//ƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰Šú‰»
+	//ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åˆæœŸåŒ–
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	assert(SUCCEEDED(hr));
 
-	//ƒeƒNƒXƒ`ƒƒƒRƒ“ƒo[ƒ^
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚³ãƒ³ãƒãƒ¼ã‚¿
 	TextureConverter converter;
 
 	converter.ConverterTextureWICToDDS(argv[kFilePath]);
 
-	//COMƒ‰ƒCƒuƒ‰ƒŠ‚ÌI—¹
+	//COMãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®çµ‚äº†
 	CoUninitialize();
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
