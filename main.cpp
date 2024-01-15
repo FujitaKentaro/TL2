@@ -1,4 +1,4 @@
-#include <cstdio>
+﻿#include <cstdio>
 #include <cstdlib>
 #include <cassert>
 #include <comdef.h>
@@ -13,12 +13,6 @@ enum Argument {
 };
 
 int main(int argc, char* argv[]) {
-
-	//for (int i = 0; i < argc; i++) {
-	//	printf(argv[i]);
-	//	//改行
-	//	printf("\n");
-	//}
 
 	assert(argc >= NumArgument);
 

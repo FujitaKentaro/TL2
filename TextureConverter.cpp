@@ -1,4 +1,4 @@
-#include "TextureConverter.h"
+﻿#include "TextureConverter.h"
 
 #include <windows.h>
 using namespace DirectX;
